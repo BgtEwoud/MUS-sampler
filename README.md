@@ -18,31 +18,19 @@ This project implements a Monetary Unit Sampling (MUS) method using a graphical 
 - Tkinter (included with standard Python installations)
 - OpenPyXL (for reading and writing Excel files)
 
-You can install the required packages using pip:
-
-```bash
-pip install pandas numpy openpyxl
-
 ## Usage
 Clone the Repository (if applicable):
-
-bash
-Code kopiëren
-git clone <repository_url>
-cd <repository_directory>
 Run the Application: Ensure you have Python installed and the necessary packages. Execute the following command:
 
-bash
-Code kopiëren
-python mus_sampler.py
-Using the GUI:
+## Using the GUI:
 
 Click on the "Browse" button to select your input Excel file (ensure it contains a sheet named input with a column labeled AMOUNT).
 Enter the desired number of sample items in the provided input box.
 Click "Run MUS Sampling" to generate the samples.
 The results will be saved in a new Excel file in the same directory as the input file, with -MUS Sampling appended to the filename.
 Click "Exit" to close the application.
-Example Input
+
+## Example Input
 The input Excel file should have a sheet named input with at least the following column:
 
 AMOUNT
@@ -50,8 +38,9 @@ AMOUNT
 150.50
 200.00
 ...
-License
+
+## License
 This project is licensed under the MIT License. See the LICENSE file for more details.
 
-Author
+## Author
 Ewoud Bogaert
