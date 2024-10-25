@@ -9,6 +9,8 @@ import pandas as pd
 import numpy as np
 import tkinter as tk
 from tkinter import filedialog, messagebox
+import os
+import sys  # Importing sys to exit the program
 
 
 class MUSSamplerApp:
@@ -39,9 +41,16 @@ class MUSSamplerApp:
         self.button_submit = tk.Button(root, text="Run MUS Sampling", command=self.run_sampling)
         self.button_submit.pack(pady=20)
 
+        # Exit button
+        self.button_exit = tk.Button(root, text="Exit", command=self.exit_app)
+        self.button_exit.pack(pady=5)
+
         # Status label
         self.label_status = tk.Label(root, text="", fg="green")
         self.label_status.pack(pady=10)
+
+        # Bind the window close event to exit the application
+        self.root.protocol("WM_DELETE_WINDOW", self.exit_app)
 
     def browse_file(self):
         """Open a file dialog to select an Excel file."""
@@ -82,6 +91,14 @@ class MUSSamplerApp:
 
         return df
 
+    def save_results(self, df):
+        """Save the resulting DataFrame to an Excel file with '-MUS Sampling' suffix."""
+        base_name = os.path.basename(self.file_path)
+        file_name, file_extension = os.path.splitext(base_name)
+        output_file = os.path.join(os.path.dirname(self.file_path), f"{file_name}-MUS Sampling{file_extension}")
+        df.to_excel(output_file, index=False)
+        return output_file
+
     def run_sampling(self):
         """Run the MUS sampling process."""
         if not self.file_path:
@@ -99,12 +116,20 @@ class MUSSamplerApp:
         self.calculate_cumulative_amount(df)
         df = self.perform_mus_sampling(df, num_samples)
 
+        # Save the resulting DataFrame to a new Excel file
+        output_file = self.save_results(df)
+
         # Output the DataFrame with selected samples
-        print("DataFrame with Monetary Unit Sampling selection:")
-        print(df)
-        
+        print("DataFrame with Monetary Unit Sampling selection saved to:")
+        print(output_file)
+
         # Update status
-        self.label_status.config(text="Sampling completed. Check console for output.")
+        self.label_status.config(text=f"Sampling completed. Results saved to: {output_file}")
+
+    def exit_app(self):
+        """Exit the application."""
+        self.root.destroy()  # Close the Tkinter window
+        sys.exit()  # Exit the program
 
 
 def main():
