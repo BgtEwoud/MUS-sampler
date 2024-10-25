@@ -20,7 +20,7 @@ This project implements a Monetary Unit Sampling (MUS) method using a graphical 
 
 ## Usage
 Clone the Repository (if applicable):
-Run the Application: Ensure you have Python installed and the necessary packages. Execute the following command:
+Run the Application: Ensure you have Python installed and the necessary packages.
 
 ## Using the GUI:
 
