@@ -1,64 +1,56 @@
 # Monetary Unit Sampling (MUS) Sampler
 
-This repository contains a Python script to perform Monetary Unit Sampling (MUS) on a dataset. MUS is commonly used in audit and accounting practices for selecting sample items based on monetary values. 
+This project implements a Monetary Unit Sampling (MUS) method using a graphical user interface (GUI). The application allows users to select an Excel file containing monetary values and specify the number of samples they want to generate. The results are then saved to a new Excel file.
 
 ## Features
-- Reads data from an Excel file
-- Randomly selects sample items using MUS
-- Prompts the user for the number of desired sample items
-- Adds a `MUS_SELECT` column to identify the selected sample items
 
-## Getting Started
+- **File Selection**: Browse and select an input Excel file containing monetary amounts.
+- **Sample Count Input**: Specify the number of sample items to generate.
+- **MUS Sampling**: Perform Monetary Unit Sampling on the selected data.
+- **Output**: Save the resulting DataFrame to a new Excel file with `-MUS Sampling` appended to the original filename.
+- **Exit Gracefully**: The application can be closed via the "Exit" button or by using the window's close button.
 
-### Prerequisites
+## Requirements
+
 - Python 3.x
-- The following Python libraries:
-  - `pandas`
-  - `numpy`
+- Pandas
+- NumPy
+- Tkinter (included with standard Python installations)
+- OpenPyXL (for reading and writing Excel files)
 
-### Installation
+You can install the required packages using pip:
 
-1. Clone this repository:
-    ```bash
-    git clone https://github.com/yourusername/MUS_Sampler.git
-    cd MUS_Sampler
-    ```
+```bash
+pip install pandas numpy openpyxl
+Usage
+Clone the Repository (if applicable):
 
-2. Install the required libraries:
-    ```bash
-    pip install -r requirements.txt
-    ```
+bash
+Code kopiëren
+git clone <repository_url>
+cd <repository_directory>
+Run the Application: Ensure you have Python installed and the necessary packages. Execute the following command:
 
-3. Ensure you have an input Excel file located at:
-    ```
-    C:\Users\EwoudBogaert\OneDrive - Bogaert-Audit\3 - Automatisatie\044. MUS Sampler\Input.xlsx
-    ```
-    or modify the file path in the `mus_sampler.py` script.
+bash
+Code kopiëren
+python mus_sampler.py
+Using the GUI:
 
-### Usage
+Click on the "Browse" button to select your input Excel file (ensure it contains a sheet named input with a column labeled AMOUNT).
+Enter the desired number of sample items in the provided input box.
+Click "Run MUS Sampling" to generate the samples.
+The results will be saved in a new Excel file in the same directory as the input file, with -MUS Sampling appended to the filename.
+Click "Exit" to close the application.
+Example Input
+The input Excel file should have a sheet named input with at least the following column:
 
-1. Run the script by executing:
-    ```bash
-    python mus_sampler.py
-    ```
+AMOUNT
+100.00
+150.50
+200.00
+...
+License
+This project is licensed under the MIT License. See the LICENSE file for more details.
 
-2. You will be prompted to enter the number of sample items:
-    ```plaintext
-    Enter the number of sample items you want:
-    ```
-
-3. The output will display the DataFrame with an additional `MUS_SELECT` column, indicating the sampled items.
-
-### Example Output
-An example DataFrame output with the `MUS_SELECT` column would look like:
-| Index | AMOUNT | CUMULATIVE_AMOUNT | MUS_SELECT |
-|-------|--------|-------------------|------------|
-| 0     | 100.5  | 100.5            | NO         |
-| 1     | 200.0  | 300.5            | YES        |
-| ...   | ...    | ...               | ...        |
-
-### License
-This project is licensed under the MIT License.
-
-### Author
+Author
 Ewoud Bogaert
