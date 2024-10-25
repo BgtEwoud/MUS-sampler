@@ -22,7 +22,8 @@ You can install the required packages using pip:
 
 ```bash
 pip install pandas numpy openpyxl
-Usage
+
+## Usage
 Clone the Repository (if applicable):
 
 bash
