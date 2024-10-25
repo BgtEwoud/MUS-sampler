@@ -63,7 +63,7 @@ class MUSSamplerApp:
 
     def load_data(self):
         """Load Excel data from the specified file path."""
-        return pd.read_excel(self.file_path, sheet_name="input")
+        return pd.read_excel(self.file_path)
 
     def get_sample_count(self):
         """Get number of samples from user input."""
